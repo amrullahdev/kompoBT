@@ -1,0 +1,101 @@
+<!-- Row -->
+<div class="row" id="boxheader">
+    <div class="col-sm">
+        <div class="info-box">
+            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Peserta Tervalidasi</span>
+                <span class="info-box-number">
+                    {{toMhs}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="info-box">
+            <span class="info-box-icon bg-teal elevation-1"><i class="fas fa-user"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Dosen Tersedia</span>
+                <span class="info-box-number">
+                    {{toDosen}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm">
+        <div class="info-box">
+            <span class="info-box-icon bg-indigo elevation-1">
+                <i class="fas fa-calendar"></i>
+            </span>
+            <div class="info-box-content">
+                <span class="info-box-text">Proposal Terjadwal</span>
+                <span class="info-box-number">
+                    {{toJadwal}}
+                </span>
+                <a href="#" class="small-box-footer">
+                    Tampilkan <i class="fas fa-arrow-circle-right small"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Table -->
+<div class="p-3 rounded bg-white">
+    <div class="row">
+        <div class="col-sm">
+            <div class="m-2">
+                <i class="fa fa-users mr-2"></i>
+                Peserta Bimbingan
+            </div>
+        </div>
+        <div class="col-sm">
+            <select name="filter" class="form-control form-control-sm" @change="filter($event)">
+                <option value="">Seluruh Data</option>
+            </select>
+        </div>
+        <div class="col-sm">
+            <div class="form-group">
+                <input type="text" class="form-control form-control-sm" v-model="cari" @keyup.enter="pencarian" placeholder="--">
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(peserta,index) in peserta">
+                <td class="text-center"> {{index + 1}} </td>
+                <td class="text-center">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination :data="primaryData" @pagination-change-page="getResults"></pagination>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn bg-teal">
+                    <i class="fa fa-plus-circle mr-2"></i> Simpan
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
